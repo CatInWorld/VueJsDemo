@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>自定义指令内容</title>
+        <meta charset="utf-8">
+        <script src="http://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app" v-google:hello.a.b="message">
+        </div>
+        <script type="text/javascript">
+            Vue.directive('google',{
+                bind:function(el,binding,vnode){
+                    var s = JSON.stringify;
+                    el.innerHTML=
+                        "name:"   + s(binding.name)+'<br>'+
+                        'value:'   + s(binding.value)+'<br>'+
+                        'expression:'+s(binding.expression)+'<br>'+
+                        'argument:'  +s(binding.arg)+'<br>'+
+                        'modifiers:'    +s(binding.modifiers)+'<br>'+
+                        'vnode keys:'  + Object.keys(vnode).join(',')
+                }
+            });
+            new Vue({
+                el:"#app",
+                data:{
+                    message:'欢迎来到谷歌！！'
+                }
+            });
+        </script>
+    </body>
+</html>

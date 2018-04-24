@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<style>
+    .class1{
+        background-color: red;
+        color:orange;
+    }
+</style>
+<body>
+    <div id="app">
+        <label for='r1'>修改颜色</label><input type="checkbox" v-model="class2" id="r1">
+        <br></br>
+        <div v-bind:class="{'class1':class2}">
+            this is v-bind test.
+        </div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            data:{
+                class2:false
+            }
+        });
+    </script>
+</body>
+</html>

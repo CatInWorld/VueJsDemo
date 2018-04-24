@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>循环语句</title>
+        <meta charset="utf-8">
+        <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ol>
+                <li v-for='site in list'>
+                    {{site.name}}
+                </li>
+            </ol>
+            <template v-for="(value,key,index) in object">
+                <li>{{index}} : {{key}} : {{value}}</li>
+                <li>-------------</li>
+            </template>
+            <ol>
+                <li v-for='i in 10'>
+                    当前数字: {{i}}
+                </li>
+            </ol>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el:'#app',
+                data:{
+                    list: [  
+                        {id : 1, name : 'first'},
+                        {id : 2, name : 'Second'},
+                        {id : 3, name : 'third'},
+                        {id : 4, name : 'four'}
+                    ],
+                    object:{
+                        name:'zjp',
+                        sex:'man',
+                        age:2018
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

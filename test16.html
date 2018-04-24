@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>事件处理器</title>
+        <meta charset="utf-8">
+        <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button @click="counter+=1">增加</button>
+            <p>这个按钮被点击{{counter}}次</p>
+            <button @click="greet">greet</button>
+            <button @click="say2()">welcome</button>
+            <input type='text' @keyup.13="alert('输入了Enter键！')">
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el:'#app',
+                data:{
+                    counter:0,
+                    name: 'World'
+                },
+                methods:{
+                    greet:function(event){
+                        alert('hello'+name+'!');
+                        if(event){
+                            alert(event.target.tagName);
+                        }
+                    },
+                    say:function(names){
+                        alert('nihao '+names);
+                    }
+                },
+                computed:{
+                    say2:function(event){
+                        alert('Hello Computed！！');
+                        return ;
+                    }
+                }
+            });
+            // vm.greet();
+        </script>
+    </body>
+</html>

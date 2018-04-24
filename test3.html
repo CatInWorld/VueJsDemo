@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="el_div">
+        <h1>site:  {{site}}</h1>
+        <h1>url:  {{url}}</h1>
+    </div>
+    <script type='text/javascript'>
+        var data = { site:'谷歌', url:'www.google.com' };
+        var vm = new Vue({
+            el:'#el_div',   
+            data:data
+        });
+        document.write(vm.a === data.a);
+        document.write('<br>');
+        vm.site = 'guge';
+        document.write(data.site+'<br>');
+
+        data.url='www.google.cn';
+        document.write(vm.url);
+
+        document.write('<br>');
+
+        document.write(vm.$data === data);
+
+        document.write('<br>');
+
+        document.write(vm.$el === document.getElementById('el_div'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>管道</title>
+        <meta charset="utf-8">
+        <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{message|cap('nihao')}}</p>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el:'#app',
+                data:{
+                    message:'china'
+                },
+                filters:{
+                    cap:function(value,addpa){
+                        if( !value ){
+                            return;
+                        }
+                        value = value.toString();
+                        return addpa +' '+ value.charAt(0).toUpperCase() + value.slice(1);
+                    }
+                }
+            }); 
+        </script>
+    </body>
+</html>

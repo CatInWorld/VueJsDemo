@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>条件语句</title>
+        <meta charset='utf-8'>
+        <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p v-if='seen'> hello world! </p>
+            <template v-if='mytype === 1'>
+                <h1> 学习技术 </h1>
+                <p> 学的不仅是技术！</p>
+                <p> 结束了 </p>
+            </template>
+            <template v-else-if='mytype === 2'>
+                <h1>hahahaha</h1>
+            </template>
+            <div v-if='num > 0.5'>
+                {{num}} 大于0.5
+            </div>
+            <div v-else>
+                {{num}} 小于0.5
+            </div>
+            <button @click='changeState'>改变显示状态</button>
+        </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el:'#app',
+                data:{
+                    seen: true,
+                    ok: true,
+                    mytype: 2,
+                    num:Math.random()
+                },
+                methods:{
+                    changeState:function(){
+                        vm.ok = !vm.ok;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

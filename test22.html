@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>vue路由测试</title>
+        <meta charset="utf-8">
+        <script src="http://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+        <script src="http://cdn.bootcss.com/vue-router/2.7.0/vue-router.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Hello App</h1>
+            <p>
+                <!-- 使用router-link组件来导航-->
+                <!-- 通过传入'to'属性指定链接 -->
+                <!-- router-link 默认会渲染成一个<a>标签-->
+                <router-link to='/foo'>Go to foo</router-link>
+                <router-link to='/bar'>Go to bar</router-link>
+            </p>
+            <!-- 路由出口 -->
+            <!-- 路由匹配到的组件将渲染到这里 -->
+            <router-view></router-view>
+        </div>
+        <script type="text/javascript">
+            const Foo = { template: '<div>Foo</div>' };
+            const Bar= { template: '<div>Bar</div>' };
+
+            const routes=[
+                {path:'/foo',component:Foo},
+                {path:'/bar',component:Bar}
+            ];
+
+            const router = new VueRouter({
+                routes
+            });
+
+            const app = new Vue({
+                router
+            }).$mount('#app');
+        </script>
+    </body>
+</html>

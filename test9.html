@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>v-on 事件监听</title>
+        <meta charset="utf-8">
+        <script src='https://cdn.bootcss.com/vue/2.2.2/vue.min.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{message}}</h1>
+            <!--v-on 缩写-->
+            <button @click='reversemessage'>反转字符串</button>
+            <!-- v-on 完整写法 -->
+            <button v-on:click='reversemessage'>反转字符串2</button>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el:'#app',
+                data:{
+                    message:'this is a text'
+                },
+                methods:{
+                    reversemessage:function(){
+                        this.message = this.message.split('').reverse().join('');
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

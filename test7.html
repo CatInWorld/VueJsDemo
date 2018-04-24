@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>test7 练习</title>
+        <meta charset='utf-8'>
+        <script src='https://cdn.bootcss.com/vue/2.2.2/vue.min.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            <p v-if='seen'>现在你看到了！！</p>
+            <!-- v-bind 完整语法 -->
+            <pre><a v-bind:href="url">百度</a></pre>
+            <!-- v-bind 缩写语法 -->
+            <pre><a :href='url2' :target="targe">谷歌</a></pre>
+
+            <button @click='addCart'>增加值</button>
+        </div>
+        <script type='text/javascript'>
+            var data = {seen: true,url: 'https://www.baidu.com', url2: 'https://www.google.com',targe:'_blank'}; 
+            var vm = new Vue({
+                el:'#app',
+                data:data,
+                methods:{
+                    addCart:function(){
+                        if(!vm.foot){
+                            Vue.set(vm,'foot',5);
+                        }else{
+                            vm.foot++;
+                        }
+                        console.log(vm.foot);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

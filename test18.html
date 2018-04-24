@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Vue自定义组件</title>
+        <meta charset="utf-8">
+        <script src="http://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model="testMessage">
+            <p>{{testMessage}}</p>
+            <test message="friend"></test>
+            <test2 v-bind:message="testMessage"></test2>
+
+            <p>自定义组件的自定义事件</p>
+            <div>
+                <p>{{total}}</p>
+                <button-counter @increment="incrementFun"></button-counter>
+                <button-counter @increment="incrementFun"></button-counter> 
+            </div>
+        </div>
+        <script type="text/javascript">
+            // 注册全局组件 
+            Vue.component('test',{
+                props:['message'],
+                template:'<h1>this is my first Vue Component!  {{message}}</h1>'
+                });
+            Vue.component('button-counter',
+            {
+                template:'<button v-on:click="incrementHandler">{{counter}}</button>',
+                data:function(){
+                        return{
+                            counter: 0
+                        }
+                    },
+                methods:{
+                    incrementHandler:function(event){
+                        this.counter+=1;
+                        this.$emit('increment');
+                    }
+                }
+            });
+            var child = {
+                props:['message'],
+                template:'<h2>this is my second Vue Component!   {{message}}</h2>'
+            }
+            new Vue({   
+                el:'#app',
+                data:{
+                    testMessage:'',
+                    total:0
+                },
+                // 注册局部组件
+                components:{
+                    'test2':child
+                },
+                methods:{
+                    incrementFun:function(){
+                        this.total+=1;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
